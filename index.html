@@ -114,6 +114,7 @@ a{color:inherit}
 .gi:hover{background:#4f7bff18}
 .gi.sel{background:linear-gradient(90deg,#4f7bff44,#4f7bff10);border-color:#8fe6ff88;box-shadow:0 0 14px #4f7bff55}
 .gi.sel .gt{color:#fff;text-shadow:0 0 8px #8fe6ffaa}
+.gi.sel .gs{text-shadow:none;color:#a9bbef}
 .tv-detail{min-height:0;min-width:0;display:grid;grid-template-columns:22cqw minmax(0,1fr);gap:3cqw;align-content:start;overflow:auto}
 .tv-cover{position:relative}
 .tv-cover img{width:100%;image-rendering:pixelated;display:block;box-shadow:0 0 0 1px #ffffff2a,0 1.4cqh 3cqh #000a;animation:float 4s ease-in-out infinite}
@@ -201,11 +202,11 @@ a{color:inherit}
 .warn-box li::before{content:"■";position:absolute;left:0;color:var(--signal);font-size:1.6cqh;top:.4cqh}
 .box-list li{display:grid;grid-template-columns:7cqw 1fr;align-items:baseline;border-bottom:1px dashed #b6b2a6;padding-bottom:1.1cqh}
 .box-list b{font-family:var(--f-pixel);font-size:max(15px,3.2cqh);font-weight:400;color:var(--signal)}
-.ctl{display:grid;gap:1.6cqh}.ctl svg{width:100%;height:auto;max-height:24cqh;color:var(--paper-ink)}
+.ctl{display:grid;gap:2cqh}.ctl svg{display:block;width:100%;height:auto;max-height:27cqh;color:var(--paper-ink)}
 .ctl ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.4cqh 3cqw}
 .ctl li{display:grid;grid-template-columns:4.2cqh 1fr;gap:1.4cqw;align-items:baseline;font-size:max(10px,2cqh);line-height:1.3}
 .ctl li i{font-style:normal;display:grid;place-items:center;width:3.4cqh;height:3.4cqh;border-radius:50%;background:var(--paper-ink);color:var(--paper);font-family:var(--f-pixel);font-size:2.6cqh}
-.ctl li b{font-family:var(--f-display);font-size:max(8px,1.5cqh);letter-spacing:.1em;display:block}
+.ctl li b{font-family:var(--f-display);font-size:max(7.5px,1.35cqh);letter-spacing:.08em;display:block;margin-bottom:.3cqh;text-transform:uppercase}
 .pg ul.timeline{gap:1.2cqh}.timeline li{font-size:max(10.5px,2.15cqh);display:grid;grid-template-columns:17cqw 1fr;gap:2cqw;align-items:baseline}
 .timeline .v{font-family:var(--f-pixel);font-size:max(14px,2.7cqh);color:var(--signal);white-space:nowrap}
 .timeline small{display:block;color:#5d616d;font-size:max(10px,1.9cqh)}
@@ -342,6 +343,7 @@ const CONFIG = {
   cvPdf: 'Bora_Mert_Kalkan_CV.pdf',
   linkedin: 'https://www.linkedin.com/in/bora-mert-kalkan',
   email: 'kalkanboramert@gmail.com',
+  youtube: '',          // Plursus YouTube channel URL
   github: 'https://github.com/qerK0',
   itchPlursus: 'https://plursus.itch.io',
   itchCavemans: 'https://cavemans.itch.io'
@@ -377,7 +379,7 @@ const GAMES = [
     credits:{tr:'3 kişilik ekip: programcı (Bora), sanatçı, hikâye tasarımcısı',en:'Team of 3: programmer (Bora), artist, narrative designer'},
     desc:{tr:'2.5D izometrik bir deprem kaçış oyunu: 6. kattaki daireden, şiddeti artan sarsıntılar ve AFAD uyarıları arasında sağ çıkmaya çalışıyorsun. Henry Stickmin tarzı seçimlerle depremde neyin yapılmaması gerektiğini öğretiyor. 48 saatte yapıldı.',
           en:'A 2.5D isometric earthquake-escape game: get out of a 6th-floor flat alive through escalating quakes and emergency alerts. Henry Stickmin-style choices teach what not to do in an earthquake. Built in 48 hours.'},
-    itch:null, web:null },
+    itch:null, web:null },          // jam game link (itch / jam page)
   { id:'kut', title:'KUT', year:2026, studio:'Plursus', status:'dev', art:'kut', bg:'#0c2a1f',
     event:null, genre:{tr:'Roguelike kart oyunu',en:'Roguelike card game'}, platform:'PC · Web', engine:'Unity',
     role:{tr:'Solo geliştirici · tasarım ve kod',en:'Solo developer · design and code'}, credits:'Plursus',
@@ -389,6 +391,12 @@ const GAMES = [
     role:{tr:'Solo geliştirici',en:'Solo developer'}, credits:'Plursus',
     desc:{tr:'Masum bir çiftlik oyunu gibi başlayıp sahte çökmeler ve jumpscare’lerle oyuncuyu ters köşe yapan bir şaka-korku oyunu. YouTube içeriği için tasarlandı; oyuncunun gardını düşürüp dördüncü duvarı kırıyor.',
           en:'A prank horror game that starts as an innocent farming sim, then turns on the player with fake crashes and jumpscares. Designed for YouTube content: it lowers your guard, then breaks the fourth wall.'},
+    itch:null, web:null },
+  { id:'yt', title:'Plursus TV', year:2026, studio:'Plursus', status:'channel', art:'bear', bg:'#0d1b3d', coverTag:'YOUTUBE', channel:true,
+    event:null, genre:{tr:'YouTube kanalı',en:'YouTube channel'}, platform:'YouTube', engine:null,
+    role:{tr:'Yapımcı · kurgu · müzik',en:'Creator · editing · music'}, credits:'Plursus',
+    desc:{tr:'Bu kartuş oyun değil, kanal. Plursus’ta oyunların nasıl yapıldığını ve bir oyun geliştiricinin oyunlara nasıl baktığını, geliştirici olmayanların da izleyebileceği bir tonda anlatıyorum. Kurgu ve müzikler bana ait.',
+          en:'This cartridge is a channel, not a game. On Plursus I show how games get made and how a game developer looks at games, in a tone non-developers can enjoy too. Editing and music are my own.'},
     itch:null, web:null }
 ];
 
@@ -406,7 +414,7 @@ const T = {
     hintBook:[['←→','Sayfa çevir'],['○','Kapat']],
     browser:'OYUN TARAYICISI', count:n=>`${n} OYUN · KRONOLOJİK`, play:'Tarayıcıda oyna', itch:'itch.io’da aç', noLink:'Bağlantı yakında',
     role:'ROLÜM', team:'EKİP', event:'ETKİNLİK', engine:'MOTOR', platform:'PLATFORM',
-    status:{released:'YAYINDA',dev:'GELİŞTİRMEDE',jam:'JAM OYUNU'},
+    status:{released:'YAYINDA',dev:'GELİŞTİRMEDE',jam:'JAM OYUNU',channel:'KANAL'}, watch:'YouTube’da izle', fullscreen:'Tam ekran',
     footSel:'Seç', footBack:'Geri', footExit:'Odaya dön', closePlay:'◂ Oyundan çık',
     closeManual:'Kapat ✕', prev:'◂ Önceki', next:'Sonraki ▸', backRoom:'◂ Odaya dön',
     tooltip:{tv:'TV · Oyunları aç',console:'Konsol · Oyunları aç',ctrl:'Kontrolcü · Oyunları aç',manual:'Kullanım kılavuzu'},
@@ -423,7 +431,7 @@ const T = {
     hintBook:[['←→','Turn page'],['○','Close']],
     browser:'GAME BROWSER', count:n=>`${n} GAMES · CHRONOLOGICAL`, play:'Play in browser', itch:'Open on itch.io', noLink:'Link coming soon',
     role:'MY ROLE', team:'TEAM', event:'EVENT', engine:'ENGINE', platform:'PLATFORM',
-    status:{released:'RELEASED',dev:'IN DEVELOPMENT',jam:'JAM GAME'},
+    status:{released:'RELEASED',dev:'IN DEVELOPMENT',jam:'JAM GAME',channel:'CHANNEL'}, watch:'Watch on YouTube', fullscreen:'Fullscreen',
     footSel:'Select', footBack:'Back', footExit:'Back to room', closePlay:'◂ Quit game',
     closeManual:'Close ✕', prev:'◂ Previous', next:'Next ▸', backRoom:'◂ Back to room',
     tooltip:{tv:'TV · Open the games',console:'Console · Open the games',ctrl:'Controller · Open the games',manual:'Instruction manual'},
@@ -552,6 +560,15 @@ function drawCover(g){
       for (let i=0;i<14;i++){ const x=8+i*11, y=100+(i%3)*22; px(c,x,y,3,6,'#2f6a22'); px(c,x-2,y-3,7,3,'#7cc95a'); }
       c.fillStyle='#bfe6ff'; c.fillRect(58,60,44,70); c.fillStyle='#8cc9ef'; c.fillRect(58,96,44,34); px(c,72,48,16,14,'#bfe6ff'); px(c,70,44,20,6,'#2f6bd8'); px(c,62,66,6,58,'#ffffff88');
       for (let i=0;i<7;i++){ const y = 30 + r()*140, h = 2+r()*6, off = (r()-.5)*24; const d = c.getImageData(0,y,CW,h); c.putImageData(d, off, y); px(c, 0, y, CW, 1, r()<.5?'#ff004c66':'#00e5ff66'); }
+    },
+    bear(){
+      px(c,0,22,CW,150,'#0d1b3d'); const r2 = rng(5); for (let i=0;i<40;i++) px(c, r2()*CW, 24+r2()*80, 1,1,'#9fb7ff');
+      px(c,0,128,CW,44,'#dfe9f7'); for (let x=0;x<CW;x+=12) px(c,x,128,8,2,'#ffffff');
+      c.fillStyle='#f4f7fb'; c.beginPath(); c.arc(80,92,36,0,7); c.fill();
+      c.beginPath(); c.arc(52,62,11,0,7); c.fill(); c.beginPath(); c.arc(108,62,11,0,7); c.fill();
+      c.fillStyle='#c9d6ea'; c.beginPath(); c.arc(52,62,5,0,7); c.fill(); c.beginPath(); c.arc(108,62,5,0,7); c.fill();
+      px(c,64,84,6,6,'#111'); px(c,90,84,6,6,'#111'); c.fillStyle='#dfe6f2'; c.beginPath(); c.ellipse(80,104,16,11,0,0,7); c.fill(); px(c,75,98,10,6,'#111');
+      px(c,58,136,44,30,'#e2384f'); c.fillStyle='#fff'; c.beginPath(); c.moveTo(74,142); c.lineTo(90,151); c.lineTo(74,160); c.closePath(); c.fill();
     }
   }[g.art]; art && art();
   // header band
@@ -563,7 +580,7 @@ function drawCover(g){
   c.textAlign='left'; c.textBaseline='alphabetic'; c.fillStyle='#fff'; c.font='bold 15px "Chakra Petch",sans-serif';
   const n = wrapText(c, g.title.toUpperCase(), 8, 190 - (g.title.length > 16 ? 8 : 0), CW-16, 15);
   c.font='14px "VT323",monospace'; c.fillStyle='#ffb15c'; c.fillText(String(g.year), 8, CH-8);
-  c.fillStyle='#ffffff99'; c.textAlign='right'; c.fillText(g.engine ? g.engine.toUpperCase() : 'PC', CW-8, CH-8);
+  c.fillStyle='#ffffff99'; c.textAlign='right'; c.fillText(g.coverTag || (g.engine ? g.engine.toUpperCase() : 'PC'), CW-8, CH-8);
   return cv;
 }
 
@@ -718,7 +735,7 @@ function buildRoom(){
   const SH_Y = 1.66, SH_Z = -2.86;
   box(1.86,.04,.24, woodM, 0,SH_Y,SH_Z);
   box(.04,.16,.03, lam(0x3a2617), -.8,SH_Y-.09,-2.97); box(.04,.16,.03, lam(0x3a2617), .8,SH_Y-.09,-2.97);
-  const n = GAMES.length, step = .28, x0 = -step*(n-1)/2;
+  const n = GAMES.length, step = Math.min(.28, 1.7/n), x0 = -step*(n-1)/2;
   const yearStrip = canvasTex(512,24,(c,w,h)=>{ px(c,0,0,w,h,'#2e1c12'); c.font='18px "VT323",monospace'; c.textAlign='center'; c.textBaseline='middle';
     GAMES.forEach((g,i)=>{ const x=((x0+i*step)+.93)/1.86*w; c.fillStyle='#ffb15c'; c.fillText(String(g.year),x,h/2+1); });
     c.fillStyle='#ffb15c88'; c.fillRect(16,h/2,22,1); c.fillRect(w-38,h/2,22,1); c.textAlign='left'; c.fillText('▸',w-22,h/2+1); });
@@ -727,7 +744,7 @@ function buildRoom(){
   GAMES.forEach((g,i)=>{
     const front = lam(0xffffff,{ map: nearestTex(coverCanvases[g.id]) });
     const mats = [caseSide, caseSide, caseSide, caseSide, front, caseSide];
-    const m = new THREE.Mesh(new THREE.BoxGeometry(.22,.31,.028), mats);
+    const m = new THREE.Mesh(new THREE.BoxGeometry(step*.8,.31,.028), mats);
     m.position.set(x0+i*step, SH_Y+.02+.155, SH_Z+.02); m.rotation.x = -.1;
     m.userData = { kind:'case', id:g.id, base:m.position.clone(), baseRot:-.1, hover:0, front };
     scene.add(m); interactive.push(m); caseMeshes.push(m);
@@ -832,7 +849,7 @@ function moveCam(pose, dur, done){
    STATE
    ===================================================================== */
 let mode = 'boot'; // boot | room | tv | manual | quick
-let sel = GAMES.length - 1; // newest by default
+let sel = GAMES.map(g=>!g.channel).lastIndexOf(true); // newest game by default
 let playing = false;
 let hovered = null;
 const mouse = { x:0, y:0, nx:0, ny:0, has:false };
@@ -868,6 +885,7 @@ function setHint(){
    TV BROWSER
    ===================================================================== */
 function statusLabel(g){ return t('status')[g.status]; }
+function gameLink(g){ if (g.channel) return CONFIG.youtube ? { url:CONFIG.youtube, label:t('watch'), short:'YouTube' } : null; return g.itch ? { url:g.itch, label:t('itch'), short:'itch.io' } : null; }
 function renderTv(){
   const g = GAMES[sel];
   let lastYear = null, list = '';
@@ -876,10 +894,11 @@ function renderTv(){
     list += `<button type="button" class="gi${i===sel?' sel':''}" data-i="${i}" aria-pressed="${i===sel}"><img src="${coverURLs[x.id]}" alt=""><span class="gt">${esc(x.title)}<span class="gs">${esc(x.studio)} · ${esc(statusLabel(x))}</span></span></button>`;
   });
   const credits = L(g.credits);
-  const link = g.itch ? `<a class="tvb" id="tvItch" href="${esc(g.itch)}" target="_blank" rel="noopener">✕ ${esc(t('itch'))} ↗</a>` : `<span class="tvb ghost" aria-disabled="true">${esc(t('noLink'))}</span>`;
+  const gl = gameLink(g);
+  const link = gl ? `<a class="tvb" id="tvItch" href="${esc(gl.url)}" target="_blank" rel="noopener">✕ ${esc(gl.label)} ↗</a>` : `<span class="tvb ghost" aria-disabled="true">${esc(t('noLink'))}</span>`;
   const play = g.web ? `<button type="button" class="tvb" id="tvPlay">▶ ${esc(t('play'))}</button>` : '';
   const html = playing && g.web ? `
-    <div class="tv-play"><div class="tv-top"><b>${esc(g.title)}</b><button type="button" class="tvb ghost" id="tvStop">${esc(t('closePlay'))}</button></div><iframe src="${esc(g.web)}" title="${esc(g.title)}" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></div>` : `
+    <div class="tv-play"><div class="tv-top"><b>${esc(g.title)}</b><span class="tv-actions"><button type="button" class="tvb ghost" id="tvFull">⛶ ${esc(t('fullscreen'))}</button><button type="button" class="tvb ghost" id="tvStop">${esc(t('closePlay'))}</button></span></div><iframe id="tvFrame" src="${esc(g.web)}" title="${esc(g.title)}" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe></div>` : `
     <div class="tv-top"><b>BMK-2005 ▸ ${esc(t('browser'))}</b><span>${esc(t('count')(GAMES.length))}</span></div>
     <div class="tv-body">
       <div class="tv-list" id="tvList">${list}</div>
@@ -909,6 +928,7 @@ function renderTv(){
     const s = lst.querySelector('.gi.sel'); s && s.scrollIntoView({ block:'nearest', inline:'nearest' });
   }
   const pl = $('#tvPlay'); pl && (pl.onclick = () => { playing = true; sfx.ok(); renderTv(); });
+  const fs = $('#tvFull'); fs && (fs.onclick = () => { const f = $('#tvFrame'); try { (f.requestFullscreen || f.webkitRequestFullscreen).call(f); } catch(e){} });
   const st = $('#tvStop'); st && (st.onclick = () => { playing = false; sfx.back(); renderTv(); });
   const it = $('#tvItch'); it && it.addEventListener('click', ()=>sfx.ok());
   lastPicked = g.id;
@@ -987,16 +1007,21 @@ function pagesHTML(){
     <p>${tr?'Topluluk tarafında GDG on Campus EMU’da co-organizer, GDND’de Saha ve İletişim takımında; sektörden konuşmacıları kampüse getirir.':'On the community side: co-organizer at GDG on Campus EMU and on GDND’s Field & Outreach team, bringing industry speakers to campus.'}</p>
     <div class="seal">${tr?'ARANAN: GAMEPLAY PROGRAMMER STAJI':'SEEKING: GAMEPLAY PROGRAMMER INTERNSHIP'}</div>`));
   // 3 controls = skills
-  const ctlSvg = `<svg viewBox="0 0 400 230" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round">
-    <path d="M96 64 Q200 46 304 64 Q352 72 368 136 Q384 208 342 220 Q314 228 292 190 L266 160 Q200 172 134 160 L108 190 Q86 228 58 220 Q16 208 32 136 Q48 72 96 64Z"/>
-    <rect x="80" y="34" width="60" height="18" rx="6"/><rect x="260" y="34" width="60" height="18" rx="6"/>
-    <path d="M100 104h14v-14h14v14h14v14h-14v14h-14v-14h-14z"/>
-    <circle cx="290" cy="90" r="9"/><circle cx="312" cy="112" r="9"/><circle cx="290" cy="134" r="9"/><circle cx="268" cy="112" r="9"/>
-    <circle cx="158" cy="156" r="18"/><circle cx="242" cy="156" r="18"/><rect x="186" y="104" width="28" height="10" rx="5"/></g>
-    <g font-family="VT323,monospace" font-size="22" fill="currentColor">
-    <text x="104" y="28">1</text><text x="284" y="28">2</text><text x="68" y="112">3</text><text x="338" y="84">4</text><text x="150" y="208">5</text><text x="236" y="208">6</text><text x="193" y="98">7</text></g></svg>`;
-  const items = tr ? [['L','C++','Unreal Engine tarafı'],['R','C#','Unity tarafı'],['Yön tuşları','Motorlar','Unity · Unreal · Godot'],['Aksiyon tuşları','Diller','C · Java · JavaScript'],['Sol analog','Araçlar','Blender · Aseprite · FL Studio'],['Sağ analog','Sistem','Git · Linux CLI · Claude Code + MCP'],['START','Topluluk','GDG · GDND · IE Club']]
-                   : [['L','C++','the Unreal side'],['R','C#','the Unity side'],['D-pad','Engines','Unity · Unreal · Godot'],['Face buttons','Languages','C · Java · JavaScript'],['Left stick','Tools','Blender · Aseprite · FL Studio'],['Right stick','Systems','Git · Linux CLI · Claude Code + MCP'],['START','Community','GDG · GDND · IE Club']];
+  const badge = (n,x,y) => `<circle cx="${x}" cy="${y}" r="12" fill="currentColor"/><text x="${x}" y="${y+6.5}" text-anchor="middle" font-family="VT323,monospace" font-size="20" style="fill:var(--paper)">${n}</text>`;
+  const lead = (x1,y1,x2,y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3 3"/>`;
+  const ctlSvg = `<svg viewBox="0 0 420 262" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="92" y="42" width="66" height="16" rx="7"/><rect x="262" y="42" width="66" height="16" rx="7"/>
+      <path d="M108 66 Q210 50 312 66 Q364 76 380 146 Q394 222 352 232 Q322 240 300 200 L276 172 Q210 184 144 172 L120 200 Q98 240 68 232 Q26 222 40 146 Q56 76 108 66Z"/>
+      <path d="M112 114h16v-16h16v16h16v16h-16v16h-16v-16h-16z"/>
+      <circle cx="300" cy="100" r="9"/><circle cx="322" cy="122" r="9"/><circle cx="300" cy="144" r="9"/><circle cx="278" cy="122" r="9"/>
+      <circle cx="170" cy="164" r="18"/><circle cx="250" cy="164" r="18"/><rect x="194" y="112" width="32" height="11" rx="5.5"/>
+    </g>
+    ${lead(125,42,125,30)}${lead(295,42,295,30)}${lead(112,122,46,122)}${lead(331,122,380,96)}${lead(170,182,170,226)}${lead(250,182,250,226)}${lead(210,112,210,98)}
+    ${badge(1,125,18)}${badge(2,295,18)}${badge(3,30,122)}${badge(4,394,88)}${badge(5,170,240)}${badge(6,250,240)}${badge(7,210,84)}
+  </svg>`;
+  const items = tr ? [['L','C++','Unreal Engine tarafı'],['R','C#','Unity tarafı'],['D-pad','Motorlar','Unity · Unreal · Godot'],['Aksiyon','Diller','C · Java · JavaScript'],['Sol analog','Araçlar','Blender · Aseprite · FL Studio'],['Sağ analog','Sistem','Git · Linux CLI · Claude Code + MCP'],['START','Topluluk','GDG · GDND · IE Club']]
+                   : [['L','C++','the Unreal side'],['R','C#','the Unity side'],['D-pad','Engines','Unity · Unreal · Godot'],['Buttons','Languages','C · Java · JavaScript'],['Left stick','Tools','Blender · Aseprite · FL Studio'],['Right stick','Systems','Git · Linux CLI · Claude Code + MCP'],['START','Community','GDG · GDND · IE Club']];
   P.push(pg(3, tr?'Kontroller':'Controls', `<h2>${tr?'Kontroller ve teknik özellikler':'Controls and specifications'}</h2>
     <div class="ctl">${ctlSvg}<ol>${items.map((it,i)=>`<li><i>${i+1}</i><span><b>${esc(it[0])} · ${esc(it[1])}</b>${esc(it[2])}</span></li>`).join('')}</ol></div>`));
   // 4 what's in the box
@@ -1125,7 +1150,7 @@ function renderQuick(){
       <article class="q-game"><img src="${coverURLs[g.id]||''}" alt=""><div><h3>${esc(g.title)}</h3>
         <div class="m">${g.year} · ${esc(g.studio)} · ${esc(statusLabel(g))} · ${esc(L(g.genre))}${g.engine?' · '+esc(g.engine):''}</div>
         <p>${esc(L(g.desc))}</p><p><strong>${esc(t('role'))}:</strong> ${esc(L(g.role))}</p></div>
-        ${g.itch?`<a href="${esc(g.itch)}" target="_blank" rel="noopener">itch.io ↗</a>`:''}</article>`).join('')}</div></section>
+        ${gameLink(g)?`<a href="${esc(gameLink(g).url)}" target="_blank" rel="noopener">${esc(gameLink(g).short)} ↗</a>`:''}</article>`).join('')}</div></section>
     <section class="q-sec"><h2>${esc(q.skills)}</h2><div class="q-skills">${SKILLS[lang].map(([k,v])=>`<div><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('')}</div></section>
     <section class="q-sec"><h2>${esc(q.history)}</h2><ul class="q-time">${HISTORY[lang].map(([v,s])=>`<li><b>${esc(v)}</b><span>${esc(s)}</span></li>`).join('')}</ul></section>`;
 }
