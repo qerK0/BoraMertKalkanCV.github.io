@@ -392,11 +392,11 @@ const GAMES = [
     desc:{tr:'Amerikano üzerine kurulu, skor odaklı bir roguelike kart oyunu. İmza mekaniği “defter”: elde kalan kartların cezası bir limite doğru birikir. Karakterler kuralları büker (rakiple kart takası, puan çalma); tanrı adlarını runlarla masaya yazıp destene bereket katıyorsun; Uzun Gece’de Anubis, Hades ve Erlik’in meyhanelerini geziyorsun.',
           en:'A score-chasing roguelike card game built on Amerikano. Its signature mechanic is the “ledger”: penalties from leftover cards stack toward a limit. Characters bend the rules (swap cards with the rival, steal points); spell deity names in runes to bless your deck; the Long Night takes you through the taverns of Anubis, Hades and Erlik.'},
     itch:'https://plursus.itch.io/kut', web:null },
-  { id:'db', title:'DamacanaBreak', year:2026, studio:'Plursus', status:'dev', art:'damacana', bg:'#16301a',
-    event:null, genre:{tr:'Meta-korku · Çiftlik',en:'Meta-horror · Farming'}, platform:'PC', engine:'Unity 6 (2D)',
+  { id:'db', title:'Cozy Farming Game', year:2026, studio:'Plursus', status:'dev', art:'farm', bg:'#16301a',
+    event:null, genre:{tr:'Çiftlik · Rahatlatıcı',en:'Farming · Cozy'}, platform:'PC', engine:'Unity 6 (2D)',
     role:{tr:'Solo geliştirici',en:'Solo developer'}, credits:'Plursus',
-    desc:{tr:'Masum bir çiftlik oyunu gibi başlayıp sahte çökmeler ve jumpscare’lerle oyuncuyu ters köşe yapan bir şaka-korku oyunu. YouTube içeriği için tasarlandı; oyuncunun gardını düşürüp dördüncü duvarı kırıyor.',
-          en:'A prank horror game that starts as an innocent farming sim, then turns on the player with fake crashes and jumpscares. Designed for YouTube content: it lowers your guard, then breaks the fourth wall.'},
+    desc:{tr:'Tohum ek, sula, hasat et. Kafa dinlemek için yapılmış, sakin ve sevimli bir çiftlik oyunu. Rahatla. Her şey yolunda.',
+          en:'Plant, water, harvest. A calm, cute farming game made for unwinding. Relax. Everything is fine.'},
     itch:'https://plursus.itch.io/cozy-harvest', web:null },
   { id:'yt', title:'Plursus TV', year:2026, studio:'Plursus', status:'channel', art:'bear', bg:'#0d1b3d', coverTag:'YOUTUBE', channel:true,
     event:null, genre:{tr:'YouTube kanalı',en:'YouTube channel'}, platform:'YouTube', engine:null,
@@ -563,12 +563,14 @@ function drawCover(g){
       c.strokeStyle='#e8c35a'; c.lineWidth=2;
       [[30,148],[52,148],[74,148],[96,148],[118,148]].forEach(([x,y],i)=>{ c.beginPath(); c.moveTo(x,y); c.lineTo(x,y+16); if(i%2){c.moveTo(x-5,y+4); c.lineTo(x+5,y+10);} else {c.moveTo(x,y+4); c.lineTo(x+6,y);} c.stroke(); });
     },
-    damacana(){
-      px(c,0,22,CW,70,'#9ed7f2'); px(c,0,92,CW,80,'#4f9c3a');
-      for (let y=98;y<172;y+=10) px(c,0,y,CW,3,'#3c7c2c');
-      for (let i=0;i<14;i++){ const x=8+i*11, y=100+(i%3)*22; px(c,x,y,3,6,'#2f6a22'); px(c,x-2,y-3,7,3,'#7cc95a'); }
-      c.fillStyle='#bfe6ff'; c.fillRect(58,60,44,70); c.fillStyle='#8cc9ef'; c.fillRect(58,96,44,34); px(c,72,48,16,14,'#bfe6ff'); px(c,70,44,20,6,'#2f6bd8'); px(c,62,66,6,58,'#ffffff88');
-      for (let i=0;i<7;i++){ const y = 30 + r()*140, h = 2+r()*6, off = (r()-.5)*24; const d = c.getImageData(0,y,CW,h); c.putImageData(d, off, y); px(c, 0, y, CW, 1, r()<.5?'#ff004c66':'#00e5ff66'); }
+    farm(){
+      px(c,0,22,CW,70,'#9ed7f2'); c.fillStyle='#ffe27a'; c.beginPath(); c.arc(128,46,12,0,7); c.fill();
+      px(c,12,40,26,6,'#ffffff'); px(c,18,36,14,4,'#ffffff'); px(c,76,52,22,5,'#ffffff');
+      px(c,0,92,CW,80,'#4f9c3a'); for (let y=98;y<172;y+=10) px(c,0,y,CW,3,'#3c7c2c');
+      px(c,24,62,48,32,'#c84a3a'); c.fillStyle='#8f2f25'; c.beginPath(); c.moveTo(18,64); c.lineTo(48,44); c.lineTo(78,64); c.closePath(); c.fill();
+      px(c,40,74,16,20,'#f3e6c8'); px(c,47,74,2,20,'#c84a3a'); px(c,40,83,16,2,'#c84a3a');
+      for (let i=0;i<12;i++){ const x=10+i*12, y=110+(i%3)*18; px(c,x,y,3,6,'#2f6a22'); px(c,x-2,y-3,7,3,'#7cc95a'); if(i%4===1){ px(c,x,y+6,3,5,'#ff8a2a'); } }
+      px(c,108,72,4,20,'#7a4a2a'); px(c,100,64,20,10,'#3c7c2c'); px(c,103,59,14,7,'#56a83f');
     },
     bear(){
       px(c,0,22,CW,150,'#0d1b3d'); const r2 = rng(5); for (let i=0;i<40;i++) px(c, r2()*CW, 24+r2()*80, 1,1,'#9fb7ff');
@@ -1069,7 +1071,7 @@ function pagesHTML(){
   P.push(pg(6, tr?'Yol haritası':'Roadmap', `<h2>${tr?'Yakında':'Coming soon'}</h2>
     <ul class="timeline">
     <li><span class="v">KUT</span><span>${tr?'Çoklu mitoloji: 24 tanrı, Uzun Gece’nin 3 meyhanesi (Anubis → Hades → Erlik). Steam sayfası gündemde.':'Multi-mythology update: 24 deities, the Long Night’s three taverns (Anubis → Hades → Erlik). Steam page under consideration.'}</span></li>
-    <li><span class="v">DB</span><span>${tr?'DamacanaBreak: çiftlik görünümlü meta-korku; sahte çökmeler ve dördüncü duvar.':'DamacanaBreak: a meta-horror disguised as a farming game; fake crashes and the fourth wall.'}</span></li>
+    <li><span class="v">CFG</span><span>${tr?'Cozy Farming Game: sakin, sevimli bir çiftlik oyunu. Tamamen zararsız.':'Cozy Farming Game: a calm, cute farming game. Completely harmless.'}</span></li>
     <li><span class="v">GM</span><span>${tr?'GameMate: oyuncuları mentor, mentee ve duo rolleriyle eşleştiren mobil uygulama; 300+ modüler parçalı karakter oluşturucu.':'GameMate: a mobile app pairing gamers as mentors, mentees and duos, with a 300+ part modular character creator.'}</span></li>
     <li><span class="v">${tr?'İŞ':'JOB'}</span><span>${tr?'Bir oyun stüdyosunda gameplay programmer stajı.':'A gameplay programmer internship at a game studio.'}</span></li></ul>
     <p><small>${tr?'Bu sayfa düzenli olarak güncellenir.':'This page is updated regularly.'}</small></p>`));
